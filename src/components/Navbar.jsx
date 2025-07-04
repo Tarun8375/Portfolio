@@ -27,17 +27,17 @@ export default function Navbar() {
   return (
     <>
       {/*Top Navbar */}
-      <nav className="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 w-[92%] md:w-[80%] rounded-2xl border border-white/20 bg-white/10 dark:bg-white/5 backdrop-blur-lg shadow-md px-6 py-3 flex items-center justify-between">
+      <nav className="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 w-[92%] md:w-[80%] rounded-2xl border border-white/20 bg-white/10 dark:bg-white/5 backdrop-blur-lg shadow-md px-6 py-3 flex items-center justify-between ">
         {/* Logo */}
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Tarun</h1>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-200">Tarun</h1>
 
         {/* 🖥 Menu Items (Center) */}
         <div className="hidden md:flex flex-1 justify-center">
           <Scrollspy
             items={menuItems.map((item) => item.id)}
-            currentClassName="text-orange-500 font-bold"
+            currentClassName="text-white font-bold"
             componentTag="ul"
-            className="flex space-x-10 text-gray-900 dark:text-white font-medium"
+            className="flex space-x-10 text-gray-900 dark:text-gray-400 font-medium"
             offset={-100}
           >
             {menuItems.map((item) => (
