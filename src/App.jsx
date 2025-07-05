@@ -8,6 +8,7 @@ import About from './components/About';
 import Work from './components/Work';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import StickyResumeButton from './components/StickyResumeButton';
 
 export default function App() {
   useEffect(() => {
@@ -47,6 +48,7 @@ export default function App() {
       <section id="footer">
         <Footer />
       </section>
+        <StickyResumeButton />
     </main>
   );
 }
