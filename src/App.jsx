@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import SmoothScroll from 'smooth-scroll';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Socials from './components/Socials';
 import ProgressBar from './components/ProgressBar';
 import About from './components/About';
+import Work from './components/Work';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 export default function App() {
+  useEffect(() => {
+    const scroll = new SmoothScroll('a[href*="#"]', {
+      speed: 600,
+      speedAsDuration: true,
+      easing: 'easeInOutCubic',
+      updateURL: false,
+    });
+
+    return () => scroll.destroy();
+  }, []);
+
   return (
     <main
       className="min-h-screen w-full overflow-x-hidden
@@ -23,8 +38,15 @@ export default function App() {
       <section id="about">
         <About />
       </section>
+      <section id="work">
+        <Work />
+      </section>
+      <section id="contact">
+        <Contact />
+      </section>
+      <section id="footer">
+        <Footer />
+      </section>
     </main>
   );
 }
-
-

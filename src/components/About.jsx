@@ -1,13 +1,11 @@
+"use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Briefcase } from "lucide-react";
 
 const skills = [
-  { name: "HTML", level: 95 },
-  { name: "CSS", level: 90 },
-  { name: "JavaScript", level: 90 },
+  { name: "HTML, CSS & JS", level: 95 },
   { name: "React", level: 85 },
-  { name: "Node.js", level: 75 },
   { name: "Photoshop", level: 80 },
   { name: "MongoDB", level: 70 },
   { name: "Express.js", level: 65 },
@@ -45,6 +43,25 @@ const experiences = [
   },
 ];
 
+const certificates = [
+  {
+    title: "Digital Marketing",
+    url: "/certificates/Digital_Marketing.pdf",
+  },
+  {
+    title: "Graphic Designing",
+    url: "/certificates/Graphic_designing.pdf",
+  },
+  {
+    title: "Web Development",
+    url: "/certificates/Web_Designing.pdf",
+  },
+  {
+    title: "Deloitte Job Simulation",
+    url: "/certificates/Deloitte Certificate.pdf",
+  },
+];
+
 export default function AboutSection() {
   const [current, setCurrent] = useState(0);
 
@@ -60,7 +77,10 @@ export default function AboutSection() {
       <div className="max-w-5xl mx-auto text-center mb-16">
         <h2 className="text-3xl sm:text-4xl font-bold mb-2">About Me</h2>
         <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-          a passionate Full Stack Developer & Creative Designer. I merge clean code with bold visuals to build impactful digital experiences. From startup websites to scalable backend systems, I focus on functionality, performance, and user-centric design.
+          A passionate Full Stack Developer & Creative Designer. I merge clean
+          code with bold visuals to build impactful digital experiences. From
+          startup websites to scalable backend systems, I focus on
+          functionality, performance, and user-centric design.
         </p>
       </div>
 
@@ -100,7 +120,10 @@ export default function AboutSection() {
         <div className="text-left">
           <h3 className="text-3xl font-semibold mb-2">Experience</h3>
           <p className="text-gray-600 dark:text-gray-300">
-            With 3+ years of hands-on experience, I’ve worked on everything from responsive websites for local clients to full-stack apps at a digital agency. My journey blends creative design and clean development to build user-focused digital solutions.
+            With 3+ years of hands-on experience, I’ve worked on everything
+            from responsive websites for local clients to full-stack apps at a
+            digital agency. My journey blends creative design and clean
+            development to build user-focused digital solutions.
           </p>
         </div>
 
@@ -143,6 +166,33 @@ export default function AboutSection() {
               Next
             </button>
           </div>
+        </div>
+      </div>
+
+      {/* Certificate Section */}
+      <div className="max-w-6xl mx-auto mt-20">
+        <h3 className="text-2xl font-semibold mb-6">Certificates</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {certificates.map((cert, idx) => (
+            <motion.a
+              key={idx}
+              href={cert.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block bg-gray-100 dark:bg-[#1e293b] p-6 rounded-lg shadow-md hover:shadow-lg transition"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <h4 className="text-lg font-semibold text-orange-500 dark:text-blue-400 mb-2">
+                {cert.title}
+              </h4>
+              <p className="text-sm text-gray-600 dark:text-gray-300">
+                Click to view the certificate (PDF)
+              </p>
+            </motion.a>
+          ))}
         </div>
       </div>
     </section>

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import myImage from "../assets/new.jpg";
-import { Typewriter } from 'react-simple-typewriter';
-import Bg from "./Bg"; // 🔁 Your background component
+import { Typewriter } from "react-simple-typewriter";
+import Bg from "./Bg";
 
 export default function Hero() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -20,20 +20,20 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative w-full h-screen overflow-hidden flex items-center justify-center"
+      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 md:px-12"
     >
-      {/* <Bg /> */}
+      <Bg />
 
       <motion.div
-        className="absolute z-10 w-full flex flex-col items-center text-center px-4"
+        className="absolute z-10 flex flex-col items-center text-center max-w-3xl"
         style={{
-          transform: `translate3d(${mousePos.x}px, ${mousePos.y}px, 0)`
+          transform: `translate3d(${mousePos.x}px, ${mousePos.y}px, 0)`,
         }}
       >
         <motion.img
           src={myImage}
-          alt="Tarun Logo"
-          className="w-68 h-68 sm:w-72 sm:h-95 mb-6 rounded-full object-cover shadow-xl"
+          alt="Tarun"
+          className="w-36 h-36 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full object-cover shadow-xl mb-6"
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6 }}
@@ -43,16 +43,20 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-3xl sm:text-5xl font-bold"
+          className="text-2xl sm:text-4xl md:text-5xl font-bold"
         >
           Tarun — Full Stack Developer
         </motion.h1>
 
         <motion.h2
-          className="text-xl sm:text-3xl font-bold text-orange-500 dark:text-blue-500 mt-2"
+          className="text-lg sm:text-2xl md:text-3xl font-bold text-orange-500 dark:text-blue-500 mt-2"
         >
           <Typewriter
-            words={["Full Stack Developer", "Graphic Designer", "Creative Thinker"]}
+            words={[
+              "Full Stack Developer",
+              "Graphic Designer",
+              "Creative Thinker",
+            ]}
             loop
             cursor
             cursorStyle="|"
@@ -66,24 +70,23 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 1 }}
-          className="mt-4 max-w-xl text-base sm:text-lg text-gray-700 dark:text-gray-300"
+          className="mt-4 text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300 px-4"
         >
           Code. Logic. Madness. Designing dreams with logic & syntax.
         </motion.p>
+
         <motion.a
-          href="#contact" // or change to your section/link
+          href="#contact"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
           className="mt-6 inline-block px-6 py-3 rounded-full font-semibold
-    text-white dark:text-white
-    bg-orange-500 dark:bg-blue-600
-    hover:bg-orange-600 dark:hover:bg-blue-700
-    shadow-md hover:shadow-xl transition duration-300"
+          text-white bg-orange-500 dark:bg-blue-600
+          hover:bg-orange-600 dark:hover:bg-blue-700
+          shadow-md hover:shadow-xl transition duration-300 text-sm sm:text-base"
         >
           Let's Talk
         </motion.a>
-
       </motion.div>
     </section>
   );
