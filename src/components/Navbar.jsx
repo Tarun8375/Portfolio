@@ -35,7 +35,7 @@ export default function Navbar() {
         <div className="hidden md:flex flex-1 justify-center">
           <Scrollspy
             items={menuItems.map((item) => item.id)}
-            currentClassName="text-white font-bold"
+            currentClassName="font-bold"
             componentTag="ul"
             className="flex space-x-10 text-gray-900 dark:text-gray-400 font-medium"
             offset={-100}

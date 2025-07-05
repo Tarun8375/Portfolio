@@ -1,106 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import myImage from "../assets/new.jpg";
 import { Typewriter } from 'react-simple-typewriter';
+import Bg from "./Bg"; // 🔁 Your background component
 
 export default function Hero() {
-  const canvasRef = useRef(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
-  const codeSnippets = [
-    "console.log('Tarun.dev 🚀')",
-    "const server = express()",
-    "npm run dev",
-    "import React from 'react'",
-    "useEffect(() => {}, [])",
-    "res.status(200).json({ success: true })",
-    "router.post('/api/send')",
-    "app.listen(3000)",
-    "Tarun - Web & Backend Wizard",
-  ];
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
-
-    const lines = [];
-    const getCurrentTheme = () =>
-      document.documentElement.classList.contains("dark");
-
-    let isDark = getCurrentTheme();
-
-    const observer = new MutationObserver(() => {
-      isDark = getCurrentTheme();
-    });
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    function createLine() {
-      const text = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
-      const x = Math.random() * (width - 200);
-      const y = Math.random() * (height - 50);
-      lines.push({
-        text,
-        x,
-        y,
-        charIndex: 0,
-        opacity: 0.34,
-        state: "typing",
-      });
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-
-      lines.forEach((line, index) => {
-        if (line.state === "typing") {
-          line.charIndex += 1;
-          if (line.charIndex >= line.text.length) {
-            line.state = "fading";
-          }
-        } else if (line.state === "fading") {
-          line.opacity -= 0.01;
-          if (line.opacity <= 0) {
-            lines.splice(index, 1);
-            return;
-          }
-        }
-
-        ctx.font = "16px monospace";
-        const color = isDark
-          ? `rgba(0,255,160,${line.opacity})`
-          : `rgba(0,0,0,${line.opacity})`;
-        ctx.fillStyle = color;
-        ctx.shadowColor = color;
-        ctx.shadowBlur = isDark ? 10 : 2;
-
-        const partial = line.text.slice(0, line.charIndex);
-        ctx.fillText(partial, line.x, line.y);
-      });
-
-      requestAnimationFrame(animate);
-    }
-
-    const spawnInterval = setInterval(createLine, 300);
-    animate();
-
-    const resize = () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    };
-    window.addEventListener("resize", resize);
-
-    return () => {
-      clearInterval(spawnInterval);
-      window.removeEventListener("resize", resize);
-      observer.disconnect();
-    };
-  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -117,10 +22,7 @@ export default function Hero() {
       id="home"
       className="relative w-full h-screen overflow-hidden flex items-center justify-center"
     >
-      <canvas
-        ref={canvasRef}
-        className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none"
-      />
+      {/* <Bg /> */}
 
       <motion.div
         className="absolute z-10 w-full flex flex-col items-center text-center px-4"
@@ -147,10 +49,10 @@ export default function Hero() {
         </motion.h1>
 
         <motion.h2
-          className="text-xl sm:text-2xl text-[#00D1FF] mt-2"
+          className="text-xl sm:text-3xl font-bold text-orange-500 dark:text-blue-500 mt-2"
         >
           <Typewriter
-            words={["Full Stack Developer", "Backend Engineer", "Creative Thinker"]}
+            words={["Full Stack Developer", "Graphic Designer", "Creative Thinker"]}
             loop
             cursor
             cursorStyle="|"
@@ -168,6 +70,20 @@ export default function Hero() {
         >
           Code. Logic. Madness. Designing dreams with logic & syntax.
         </motion.p>
+        <motion.a
+          href="#contact" // or change to your section/link
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="mt-6 inline-block px-6 py-3 rounded-full font-semibold
+    text-white dark:text-white
+    bg-orange-500 dark:bg-blue-600
+    hover:bg-orange-600 dark:hover:bg-blue-700
+    shadow-md hover:shadow-xl transition duration-300"
+        >
+          Let's Talk
+        </motion.a>
+
       </motion.div>
     </section>
   );

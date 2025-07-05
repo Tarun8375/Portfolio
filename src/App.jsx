@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Socials from './components/Socials';
 import ProgressBar from './components/ProgressBar';
+import About from './components/About';
 
 export default function App() {
   return (
@@ -18,6 +19,9 @@ export default function App() {
       <section id="home">
         <Hero />
         <Socials />
+      </section>
+      <section id="about">
+        <About />
       </section>
     </main>
   );
